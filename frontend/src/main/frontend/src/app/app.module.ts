@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule} from "@angular/router";
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
@@ -14,16 +14,24 @@ import {MinorViewModule} from "./views/minor-view/minor-view.module";
 import {LoginModule} from "./views/login/login.module";
 import {RegisterModule} from "./views/register/register.module";
 
+import { ChartComponent } from './views/chart/chart.component';
+import { EChartOptionDirective1 } from './views/chart/echart-option.directive';
+import { ChartTestComponent } from './views/chart/chart-test/chart-test.component';
+
 // App modules/components
 import {LayoutsModule} from "./components/common/layouts/layouts.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EChartOptionDirective1,
+    ChartComponent,
+    ChartTestComponent
   ],
   imports: [
     // Angular modules
-    BrowserModule,
+  BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
 
     // Views

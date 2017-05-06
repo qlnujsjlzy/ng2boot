@@ -1,13 +1,14 @@
-import {Routes} from "@angular/router";
-import {mainViewComponent} from "./views/main-view/main-view.component";
-import {minorViewComponent} from "./views/minor-view/minor-view.component";
-import {loginComponent} from "./views/login/login.component";
-import {registerComponent} from "./views/register/register.component";
-import {blankComponent} from "./components/common/layouts/blank.component";
-import {basicComponent} from "./components/common/layouts/basic.component";
+import { Routes } from "@angular/router";
+import { mainViewComponent } from "./views/main-view/main-view.component";
+import { minorViewComponent } from "./views/minor-view/minor-view.component";
+import { loginComponent } from "./views/login/login.component";
+import { registerComponent } from "./views/register/register.component";
+import { blankComponent } from "./components/common/layouts/blank.component";
+import { basicComponent } from "./components/common/layouts/basic.component";
+import { ChartComponent } from './views/chart/chart.component';
 
 
-export const ROUTES:Routes = [
+export const ROUTES: Routes = [
   // Main redirect
   {path: '', redirectTo: 'mainView', pathMatch: 'full'},
 
@@ -16,17 +17,18 @@ export const ROUTES:Routes = [
     path: '', component: basicComponent,
     children: [
       {path: 'mainView', component: mainViewComponent},
-      {path: 'minorView', component: minorViewComponent}
+      {path: 'minorView', component: minorViewComponent},
+      {path: 'chart', component: ChartComponent}
     ]
   },
   {
     path: '', component: blankComponent,
     children: [
-      { path: 'login', component: loginComponent },
-      { path: 'register', component: registerComponent }
+      {path: 'login', component: loginComponent},
+      {path: 'register', component: registerComponent}
     ]
   },
 
   // Handle all other routes
-  {path: '**',    component: mainViewComponent }
+  {path: '**', component: mainViewComponent}
 ];

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { correctHeight, detectBody } from './app.helpers';
 
-declare var jQuery:any;
 
 @Component({
   selector: 'app-root',

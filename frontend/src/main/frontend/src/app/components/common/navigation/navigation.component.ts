@@ -1,24 +1,30 @@
-import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../../../views/user/model/user-model';
 
-declare var jQuery:any;
 
 @Component({
-    selector: 'navigation',
-    templateUrl: 'navigation.template.html'
+  selector: 'navigation',
+  templateUrl: 'navigation.template.html'
 })
 
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
+  public currentUser: User;
 
-    constructor(private router: Router) {}
+  ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  }
 
-    ngAfterViewInit() {
-        jQuery('#side-menu').metisMenu();
-    }
+  constructor(private router: Router) {
+  }
 
-    activeRoute(routename: string): boolean{
-        return this.router.url.indexOf(routename) > -1;
-    }
+  ngAfterViewInit() {
+    jQuery('#side-menu').metisMenu();
+  }
+
+  activeRoute(routename: string): boolean {
+    return this.router.url.indexOf(routename) > -1;
+  }
 
 
 }

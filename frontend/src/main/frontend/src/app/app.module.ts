@@ -1,13 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import {RouterModule} from "@angular/router";
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import {ROUTES} from "./app.routes";
 import { AppComponent } from './app.component';
-
 // App views
 import {MainViewModule} from "./views/main-view/main-view.module";
 import {MinorViewModule} from "./views/minor-view/minor-view.module";
@@ -20,7 +19,15 @@ import { ChartTestComponent } from './views/chart/chart-test/chart-test.componen
 
 // App modules/components
 import {LayoutsModule} from "./components/common/layouts/layouts.module";
+import { SharedModule } from './views/shared/shared.module';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { UserLoginService } from './views/login/login.service';
+import { UserRegisterService } from './views/register/register.service';
 
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,9 +50,22 @@ import {LayoutsModule} from "./components/common/layouts/layouts.module";
     // Modules
     LayoutsModule,
 
+
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    }),
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    UserLoginService,
+    UserRegisterService,
+    // {provide: LocationStrategy, useClass: HashLocationStrategy}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

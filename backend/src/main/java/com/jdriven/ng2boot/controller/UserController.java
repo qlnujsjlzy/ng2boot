@@ -11,7 +11,7 @@ public class UserController {
 
     @RequestMapping(value = "login")
     public UserLogin userLogin() {
-        UserLogin userLogin= new UserLogin(1L, "admin", "fake-jwt-token");
+        UserLogin userLogin= new UserLogin(1L, "李朝阳", "fake-jwt-token");
         System.out.println(userLogin.toString());
         return userLogin;
     }

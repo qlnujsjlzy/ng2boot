@@ -28,10 +28,6 @@ export class loginComponent implements OnInit {
     this.userLoginService.login(this.user);
   }
 
-  public doLogout(): void {
-    this.userLoginService.logout();
-    this.router.navigateByUrl("");
-  }
 
   public forgetPwd(): void {
     this.router.navigateByUrl("forgetpwd");

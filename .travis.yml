@@ -1,3 +1,13 @@
 language: java
 jdk:
   - oraclejdk7
+
+script: "mvn clean package -Dmaven.test.skip=true"
+
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    - qlnujsjlzy@163.com

@@ -16,6 +16,9 @@ public class JsonUtils {
     }
 
     public static String toJson(Object obj) {
+        if (obj==null){
+            return null;
+        }
         try {
             return JSON.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
